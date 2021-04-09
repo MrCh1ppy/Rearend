@@ -8,7 +8,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    String username;
-    String password;
-    String admin;
+    private Integer id;
+    private String name;
+    private String password;
+    private String identity;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", identity='" + identity + '\'' +
+                '}';
+    }
 }

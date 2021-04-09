@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+    <!--增加的方法-->
+    <insert id="insert">
+        insert into user(name,password,identity) value(#{name},#{password},#{identity})
+    </insert>
+
+    <!--删除的方法-->
+    <delete id="delete">
+        delete from user where
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="name!=null and name!=''">
+                name = #{name}
+            </if>
+    </delete>
+
+    <!--修改的方法-->
+    <!--全局修改-->
+    <update id="update">
+        update user set name = #{name},password = #{password},identity = #{identity} where id = #{id}
+    </update>
+
+    <!--单条查询的方法-->
+    <select id="selectOne" resultType="com.example.demo.pojo.User">
+        select id,name,password,identity from user
+            <where>
+                <if test="id!=null">
+                    and id = #{id}
+                </if>
+                <if test="name!=null and name!=''">
+                    and name = #{name}
+                </if>
+            </where>
+    </select>
+
+    <!--查询多条的方法-->
+    <select id="select" resultType="com.example.demo.pojo.User">
+        select id,name,password,identity from user where identity = #{identity}
+    </select>
+</mapper>
