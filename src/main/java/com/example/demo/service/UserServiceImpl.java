@@ -5,7 +5,9 @@ import com.example.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -18,21 +20,37 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void addUser(User user) {
-
+        userDao.insert(user);
     }
 
     @Override
-    public void deleteUser(Integer userid) {
-
+    public void deleteUserById(Integer userid) {
+        Map<String, Object> params=new HashMap<>();
+        params.put("id",userid);
+        this.userDao.delete(params);
     }
 
     @Override
-    public Collection<User> getUsers() {
-        return null;
+    public void deleteUserByName(String username) {
+        Map<String, Object> params=new HashMap<>();
+        params.put("name",username);
+        this.userDao.delete(params);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userDao.selectAll();
     }
 
     @Override
     public User getUserById(Integer userid) {
+        Map<String, Object> params=new HashMap<>();
+        params.put("id",userid);
+        return userDao.selectOne(params);
+    }
+
+    @Override
+    public User getUserByName(String username) {
         return null;
     }
 }

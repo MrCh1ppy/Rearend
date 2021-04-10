@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--头部导航栏-->
+<div th:fragment="topBar" xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/index.html}"
+           th:text="${session.loginUserName}"></a>
+        <input aria-label="Search" class="form-control form-control-dark w-100" placeholder="Search" type="text">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" th:href="@{/index.html}">退出</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--侧边栏-->
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sideBar" xmlns:th="http://www.thymeleaf.org">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/templates/main/dashboard.html">
+                    <svg class="feather feather-home" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    首页 <span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/employees\">
+                    <svg class="feather feather-users" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    用户管理
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+</html>
