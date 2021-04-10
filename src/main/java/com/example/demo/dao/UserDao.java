@@ -23,9 +23,9 @@ public interface UserDao {
     //修改用户全部信息
     int update(User user);
     /*修改密码*/
-    void updatePassword(String password);
+    //void updatePassword(String password);
     /*修改权限*/
-    void updateIdentity(String identity);
+    //void updateIdentity(String identity);
     //查询方法
     List<User> selectAll();
     //单条查询方法
